@@ -1,3 +1,4 @@
-<!-- yes invalid html! i know, i dont care! -->
+<!--< yes invalid html! i know, i dont care! -->
 
-this is awesome :D
+<img src="/static/img/go_drop.png" />
+<div><b>this is awesome :D</b></div>

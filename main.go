@@ -8,6 +8,7 @@ import (
 func main() {
 	fmt.Print("Go HTMX FTW")
 
-	srv.RunApp()
+	app := &srv.App{}
+	app.RunApp()
 
 }
