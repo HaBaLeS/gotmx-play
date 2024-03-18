@@ -1,0 +1,7 @@
+<!-- yes invalid html! i know, i dont care! -->
+
+<script src="/static/js/htmx.min.js"></script>
+<!-- have a button POST a click via AJAX -->
+<button hx-post="/clicked" hx-swap="outerHTML">
+    Click Me
+</button>
