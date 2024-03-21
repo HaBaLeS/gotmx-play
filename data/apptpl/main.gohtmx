@@ -1,7 +1,30 @@
-<!-- yes invalid html! i know, i dont care! -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTMX Tasklist</title>
+    <link rel="stylesheet" href="/static/css/bulma.css">
+    <script src="/static/js/htmx.min.js"></script>
+    <script src="/static/js/Sortable.js"></script>
+    <script src="/static/js/tasklist.js"></script>
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Hello World
+      </h1>
+      <p class="subtitle">
+        My first website with <strong>Bulma</strong>!
+      </p>
+    </div>
+    <div>
+      <form class="sortable" hx-post="/task/tasklist" hx-trigger="end">
+        <div hx-get="/task/tasklist" hx-trigger="load" hx-swap="outerHTML"></div>
+      </form>
+    </div>
 
-<script src="/static/js/htmx.min.js"></script>
-<!-- have a button POST a click via AJAX -->
-<button hx-post="/clicked" hx-swap="outerHTML">
-    Click Me
-</button>
+  </section>
+  </body>
+</html>
