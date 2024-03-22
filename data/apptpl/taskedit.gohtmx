@@ -1,0 +1,19 @@
+<form hx-put="/task/create" id="submit-task">
+    <div class="field">
+        <label class="label">Task Title</label>
+        <div class="control">
+            <input class="input" name="title" type="text" placeholder="Title">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+            <textarea class="textarea" name="description" placeholder="Textarea"></textarea>
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <button class="button is-link">Add Task</button>
+        </div>
+    </div>
+</form>

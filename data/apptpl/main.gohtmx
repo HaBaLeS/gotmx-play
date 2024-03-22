@@ -20,11 +20,15 @@
       </p>
     </div>
     <div>
-      <form class="sortable" hx-post="/task/tasklist" hx-trigger="end">
-        <div hx-get="/task/tasklist" hx-trigger="load" hx-swap="outerHTML"></div>
+      <form class="sortable" hx-post="/task/tasklist" hx-trigger="end, newTask from:body">
+        <div hx-get="/task/tasklist" hx-trigger="load" hx-swap="outerHTML">
+            ... .still loading
+        </div>
       </form>
     </div>
-
+    <div>
+        <button hx-get="/task/create" class="button is-primary" hx-swap="outerHTML">Add Task</button>
+    </div>
   </section>
   </body>
 </html>

@@ -12,7 +12,12 @@ type TaskDomain struct {
 	tpls   *templ.Tpls
 }
 
-func (d TaskDomain) init() {
+type AddTask struct {
+	Title       string `form:"title"`
+	Description string `form:"description"`
+}
+
+func (d *TaskDomain) init() {
 
 	task := d.router.Group("/task")
 
@@ -23,7 +28,30 @@ func (d TaskDomain) init() {
 	task.POST("/tasklist", func(c *gin.Context) {
 		//update order
 		tpl := d.tpls.GetTemplate("tasklist.gohtmx")
+		if newOrder, ok := c.GetPostFormArray("item"); ok {
+			d.UpdateOrder(newOrder)
+		}
 		tpl.Execute(c.Writer, d.ListTasks())
+	})
+
+	task.GET("/create", func(c *gin.Context) {
+		d.tpls.GetTemplate("taskedit.gohtmx").Execute(c.Writer, nil)
+	})
+
+	task.PUT("/create", func(c *gin.Context) {
+		var data AddTask
+		if e := c.ShouldBind(&data); e != nil {
+			panic(e)
+		}
+		d.AddTask(data)
+		c.Header("HX-Trigger", "newTask")
+		c.Writer.WriteString("<button hx-get=\"/task/create\" class=\"button is-primary\" hx-swap=\"outerHTML\">Add Task</button>")
+	})
+
+	task.DELETE("/:id", func(c *gin.Context) {
+		idToDelete := c.Param("id")
+		d.DeleteTask(idToDelete)
+		c.Header("HX-Trigger", "newTask") //fixme add a task delete or list update tirgger
 	})
 
 }

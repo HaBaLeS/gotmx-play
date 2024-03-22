@@ -1,7 +1,10 @@
 package task
 
+import "database/sql"
+
 type TaskEntity struct {
-	Id       int
-	Title    string
-	OrderNum int
+	Id       int            `db:"id"`
+	Title    string         `db:"title"`
+	Desc     sql.NullString `db:"description"`
+	OrderNum int            `db:"order_num"`
 }

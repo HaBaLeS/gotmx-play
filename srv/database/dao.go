@@ -9,11 +9,11 @@ import (
 )
 
 const (
-	PostgresUser = "user"
-	PostgresPass = "pass"
-	PostgresHost = "host"
-	PostgresPort = 5423
-	PostgresDB   = "database"
+	PostgresUser = "postgres"
+	PostgresPass = "postgres"
+	PostgresHost = "localhost"
+	PostgresPort = 5432
+	PostgresDB   = "todoapp"
 )
 
 type Db struct {
